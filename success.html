@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root {
+
+--Green-200-lighter: hsl(148, 38%, 91%);
+--Green-600-medium: hsl(169, 82%, 27%);
+--Red: hsl(0, 66%, 54%);
+--White: hsl(0, 0%, 100%);
+--Grey-500-medium: hsl(186, 15%, 59%);
+--Grey-900-darker: hsl(187, 24%, 22%);
+
+}
+        body{
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .container{
+            background-color:var(--Green-600-medium) ;
+            width: 300px;
+            height: 350px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            border:  1px solid var(--Grey-500-medium);
+            color: white;
+            
+        }
+        .container h4{
+            font-size: xx-large;
+            font-weight: 900;
+        }
+        .container p {
+            width: 70%;
+            line-height: 28px;
+        }
+    </style>
+</head>
+<body>
+   <div class="container">
+    <h4>Message Sent!</h4> 
+    <p>Thanks for completing the form. We'll be in touch soon! </p>
+   </div>
+</body>
+</html>
