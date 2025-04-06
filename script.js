@@ -11,6 +11,7 @@ function validate(event) {
 
   let checkbox = document.getElementById("checkbox");
   let textArea = document.querySelector("textarea");
+  let form = document.getElementById("contact-form");
 
   let previousErrors = document.querySelectorAll(".error-message");
   previousErrors.forEach(function (error) {
@@ -53,7 +54,9 @@ function validate(event) {
     isValid = false;
   }
   if (isValid) {
-    window.location.href = "/contact starter/success.html"; // Manually redirect to success page
+    document.getElementById("success-message").classList.remove("hidden");
+    form.reset();
+
   }
   return isValid;
 }

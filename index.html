@@ -12,7 +12,15 @@
 </head>
 <body>
 
- <form onsubmit="return validate(event)"   action="/contact starter/success.html" method="GET">
+  <div id="success-message" class="success-message hidden">
+    <h3>✔ Message Sent!</h3>
+    <p>Thanks for completing the form. We'll be in touch soon!</p>
+  </div>
+  
+
+
+
+ <form    id="contact-form"      onsubmit="return validate(event)"    method="GET">
 
   <h2>Contact Us</h2>
   <div class="div-input">

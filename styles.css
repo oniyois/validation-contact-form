@@ -16,13 +16,13 @@
     }
     body{
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
         background-color: var(--Green-200-lighter);
     }
     form{
-        margin: 100px auto;
+        margin: 48px auto;
         background-color: var(--White);
         padding: 24px 16px;
      
@@ -102,6 +102,23 @@
         border: 1px solid var(--Grey-500-medium);
         margin-top: 16px;
     }
+    .success-message {
+        background-color: #1b3c34;
+        color: white;
+        padding: 16px;
+        border-radius: 6px;
+        margin-top: 120px;
+        text-align: center;
+        border-bottom: 0;
+
+      }
+      
+      .hidden {
+        display: none;
+      }
+      
+
+    
 
     
       @media (max-width: 600px) {
