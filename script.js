@@ -1,37 +1,59 @@
-let firstName = document.getElementById("input1");
-
-let lastName = document.getElementById("input2");
-let email = document.getElementById("input3");
-let checkbox = document.getElementById("checkbox");
-
-let submitButton = document.getElementById("submit-btn");
-submitButton.addEventListener("click", (event) => {
+function validate(event) {
   event.preventDefault();
+  let isValid = true;
 
-  if (firstName.value.trim() === "" || lastName.value.trim() === "") {
-    let errorMessage = document.createElement("p");
-    let errorMessageTextNode = document.createTextNode(
-      "This field is required"
-    );
-    errorMessage.appendChild(errorMessageTextNode);
-    errorMessage.style.color = "red";
-    firstName.parentNode.appendChild(errorMessage);
-  } else if (email.value.trim() === "") {
-    let errorMessage3 = document.createElement("p");
-    let errorMessageTextNode3 = document.createTextNode(
-      "please enter email address"
-    );
-    errorMessage3.appendChild(errorMessageTextNode3);
-    errorMessage3.style.color = "red";
-    email.parentNode.appendChild(errorMessage3);
-  } else if(!checkbox.checked){
-    let errorMessage3 = document.createElement("p");
-    let errorMessageTextNode3 = document.createTextNode(
+  let firstName = document.getElementById("input1");
+
+  let lastName = document.getElementById("input2");
+  let email = document.getElementById("input3");
+  let query1 = document.getElementById("query1");
+  let query2 = document.getElementById("query2");
+
+  let checkbox = document.getElementById("checkbox");
+  let textArea = document.querySelector("textarea");
+
+  let previousErrors = document.querySelectorAll(".error-message");
+  previousErrors.forEach(function (error) {
+    error.remove();
+  });
+
+  function showError(inputElement, message) {
+    let error = document.createElement("p");
+    error.textContent = message;
+    error.style.color = "red";
+    error.classList.add("error-message");
+    inputElement.parentNode.appendChild(error);
+  }
+
+  if (firstName.value.trim() == "") {
+    showError(firstName, "this field is required");
+    isValid = false;
+  }
+  if (lastName.value.trim() == "") {
+    showError(lastName, "this field is required");
+    isValid = false;
+  }
+  if (email.value.trim() == "") {
+    showError(email, "please enter email address");
+    isValid = false;
+  }
+  if (!query1.checked && !query2.checked) {
+    showError(query1, "Please select a query option");
+    isValid = false;
+  }
+  if (textArea.value.trim() == "") {
+    showError(textArea, "this field is required");
+    isValid = false;
+  }
+  if (!checkbox.checked) {
+    showError(
+      checkbox,
       "To submit this form, please consent to being contacted"
     );
-
-
-  }else{
-    
+    isValid = false;
   }
-});
+  if (isValid) {
+    window.location.href = "/contact starter/success.html"; // Manually redirect to success page
+  }
+  return isValid;
+}
