@@ -102,11 +102,7 @@
         border: 1px solid var(--Grey-500-medium);
         margin-top: 16px;
     }
-    
-    .error{
-        border-color: var(--Red);
-    }
-    
+
     
       @media (max-width: 600px) {
     

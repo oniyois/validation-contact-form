@@ -6,13 +6,13 @@
 
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
   
-  <title>validation form</title>
+  <title>test validation form</title>
 
 <link rel="stylesheet" href="styles.css"> 
 </head>
 <body>
 
- <form   action="/success.html" method="GET">
+ <form onsubmit="return validate(event)"   action="/contact starter/success.html" method="GET">
 
   <h2>Contact Us</h2>
   <div class="div-input">
@@ -35,8 +35,8 @@
  <div class="div-query-type">
   <P>Query Type</P> 
  <div class="div-query-btn">
-  <button><input type="radio" name="option" required /> General Enquiry</button>
- <button><input  type="radio"   name="option" required/> Support Request</button>
+  <button><input  id="query1"   type="radio" name="option" /> General Enquiry</button>
+ <button><input   id="query2"type="radio"   name="option"/> Support Request</button>
  </div>
  </div>
   
@@ -46,10 +46,10 @@
  
 
 
-  <p><input type="checkbox" required/> I consent to being contacted by the team</p>
+  <p><input type="checkbox" id ="checkbox"/> I consent to being contacted by the team</p>
   <!-- To submit this form, please consent to being contacted -->
 
- <button id="submit-btn" type="submit" onclick="validate()">Submit</button> 
+ <button id="submit-btn" type="submit" >Submit</button> 
  </form>
 
   <!-- Message Sent!
@@ -60,40 +60,66 @@
     Coded by <a href="#">Your Name Here</a>.
   </div> -->
   <script>
-    function validate(){
+    function validate(event){
+      event.preventDefault();
+      let isValid = true;
       
 let firstName = document.getElementById("input1");
 
 let lastName = document.getElementById("input2");
 let email = document.getElementById("input3");
+let query1 = document.getElementById("query1");
+let query2 = document.getElementById("query2");
 
-let submitButton = document.getElementById("submit-btn");
-submitButton.addEventListener("click", (event)=> {
- 
+let checkbox = document.getElementById("checkbox");
+let textArea = document.querySelector("textarea");
 
-    event.preventDefault();
+let previousErrors = document.querySelectorAll(".error-message");
+  previousErrors.forEach(function (error) {
+    error.remove();
+  });
 
-    if (firstName.value.trim()=== "" || lastName.value.trim() === ""){
-        let errorMessage =   document.createElement("p");
-      let errorMessageTextNode =  document.createTextNode("This field is required");
-      errorMessage.appendChild(errorMessageTextNode);
-      errorMessage.style.color = "red";  
-      firstName.parentNode.appendChild(errorMessage);
-        
-    }else if (email.value.trim() === ""){
-            let errorMessage3 =   document.createElement("p");
-             let errorMessageTextNode3 =  document.createTextNode("please enter email address");
-             errorMessage3.appendChild(errorMessageTextNode3);
-             errorMessage3.style.color = "red";  
-             email.parentNode.appendChild(errorMessage3);
+  function showError(inputElement, message) {
+    let error = document.createElement("p");
+    error.textContent = message;
+    error.style.color = "red";
+    error.classList.add("error-message");
+    inputElement.parentNode.appendChild(error);
+  }
 
-    }else{
-       
+if (firstName.value.trim()== ""){
+  showError(firstName, "this field is required");
+      isValid = false;
+}if(lastName.value.trim()== ""){
+showError(lastName, "this field is required");
+isValid = false;
+}
+if (email.value.trim() == ""){
+  showError(email, "please enter email address");
+  isValid = false;
+
+}if(!query1.checked && !query2.checked){
+  
+  showError(query1, "Please select a query option");
+  isValid = false;
+}if(textArea.value.trim()== ""){
+  showError(textArea, "this field is required");
+  isValid = false;
+}if (!checkbox.checked){
+  showError(checkbox, "To submit this form, please consent to being contacted");
+  isValid = false;
+}if (isValid) {
+      window.location.href = "/contact starter/success.html"; // Manually redirect to success page
     }
-})
+  return isValid;
+  
+}
+  
 
-    }
 
+
+
+    
   </script>
 </body>
 </html>
