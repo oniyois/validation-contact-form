@@ -23,7 +23,9 @@ function validate(event) {
     error.textContent = message;
     error.style.color = "red";
     error.classList.add("error-message");
-    inputElement.parentNode.appendChild(error);
+    // inputElement.parentNode.appendChild(error);
+    inputElement.insertAdjacentElement("afterend", error);
+
   }
 
   if (firstName.value.trim() == "") {
