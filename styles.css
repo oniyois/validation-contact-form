@@ -32,6 +32,7 @@
         border-radius: 8px;
         padding: 8px 16px;
         border: 1px solid var(--Grey-500-medium);
+        
     
       
     }
@@ -117,7 +118,19 @@
         display: none;
       }
      
+      input[type="checkbox"]:checked {
+        accent-color: green;
+      }
+
+      input[type="radio"]:checked {
+        accent-color: green;
+      }
       
+      input[type='text']:active{
+        border: 1px solid var(--Green-600-medium);
+        background-color: var(--Grey-500-medium);
+
+      }
       
       @media (max-width: 600px) {
     
